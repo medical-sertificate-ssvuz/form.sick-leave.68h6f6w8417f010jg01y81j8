@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="https://www.lelo.com/blog/wp-content/uploads/2021/11/climax_circle_ico_white.png" type="image/png">
+  <title>Sog‘liqni saqlash vazirligi</title>
+
+  <!-- Montserrat shriftini ulash -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 360px;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+      gap: 15px;
+      text-align: left;
+    }
+
+    .logo {
+      width: 60px;
+      height: auto;
+    }
+
+    .header h2 {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      transition: border 0.3s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    input.error {
+      border-color: red;
+    }
+
+    .message {
+      color: red;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    button {
+      background-color: #4285f4;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://i.pinimg.com/originals/f1/27/eb/f127eb794edf217133cd8459eb4d0f62.jpg" alt="O'zbekiston gerbi" class="logo">
+      <h2>O‘zbekiston Respublikasi Sog‘liqni Saqlash Vazirligi</h2>
+    </div>
+    <div class="form">
+      <label for="code">Tasdiqlash kodi</label>
+      <input type="text" id="code" placeholder="Kodni kiriting" maxlength="4" onkeypress="handleKeyPress(event)">
+      <p id="message" class="message"></p>
+      <button id="submitBtn" onclick="checkCode()">Tasdiqlash</button>
+    </div>
+  </div>
+
+  <script>
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') {
+        checkCode();
+      }
+    }
+
+    function checkCode() {
+      const codeInput = document.getElementById('code');
+      const code = codeInput.value.trim();
+      const message = document.getElementById('message');
+      const button = document.getElementById('submitBtn');
+
+      // Tozalash
+      message.textContent = '';
+      codeInput.classList.remove('error');
+      button.disabled = false;
+      button.textContent = 'Tasdiqlash';
+
+      if (!/^\d{4}$/.test(code)) {
+        message.textContent = 'Kod 4 ta raqamdan iborat bo‘lishi kerak.';
+        codeInput.classList.add('error');
+        return;
+      }
+
+      if (code !== '8883') {
+        message.textContent = 'Kod noto‘g‘ri.';
+        codeInput.classList.add('error');
+        return;
+      }
+
+      // Kod to‘g‘ri
+      button.disabled = true;
+      button.textContent = 'Yuklanmoqda...';
+      window.open('https://drive.google.com/file/d/191fm0ofkXgE8Xu2IuZ8BRxogg8Xes5Uf/view?usp=sharing', '_blank');
+
+      setTimeout(() => {
+        button.disabled = false;
+        button.textContent = 'Tasdiqlash';
+        codeInput.value = '';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
